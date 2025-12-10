@@ -14,8 +14,9 @@
     <!-- 第三方库 -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
-    <!-- 配置文件 -->
+    <!-- 基础配置 & 样式 -->
     <script src="config.js"></script>
+    <script src="js/theme-init.js"></script>
 
     <!-- CSS 样式 -->
     <link rel="stylesheet" href="css/reset.css">
@@ -41,11 +42,7 @@
         </div>
 
         <div class="nav-controls">
-            <button class="icon-btn" onclick="toggleFilter()" title="筛选">
-                <svg viewBox="0 0 24 24">
-                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
-                </svg>
-            </button>
+            <!-- 筛选按钮已移除，功能合并至搜索栏 -->
             <button class="icon-btn" onclick="toggleTheme()" title="切换主题">
                 <svg id="theme-icon" viewBox="0 0 24 24">
                     <path
@@ -67,13 +64,41 @@
             </svg>
             <input type="text" id="searchInput" class="search-input" placeholder="Search players..."
                 oninput="debounceSearch()">
+
+            <!-- 球队筛选下拉框 -->
+            <select id="teamSelect" class="filter-select-inline" onchange="handleFilter()">
+                <option value="all">All Teams</option>
+            </select>
+
+            <!-- 布局切换按钮 -->
+            <div class="layout-toggle">
+                <button class="layout-btn active" onclick="setLayout('grid')" title="Grid View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                </button>
+                <button class="layout-btn" onclick="setLayout('list')" title="List View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <div class="filter-panel" id="filterPanel">
-        <select id="teamSelect" class="filter-select" onchange="handleFilter()">
-            <option value="all">All Teams</option>
-        </select>
+    <!-- 列表模式表头 (默认隐藏) -->
+    <div class="list-header" id="listHeader">
+        <div class="col-avatar">Headshot</div>
+        <div class="col-name">Name</div>
+        <div class="col-team">Team</div>
     </div>
 
     <main class="grid-container" id="player-list">

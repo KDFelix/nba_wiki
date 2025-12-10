@@ -84,23 +84,29 @@
 
 /* 4. Search */
 .search-container {
-    max-width: 600px;
-    margin: 32px auto 0;
     position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    /* 改为 Flex 布局 */
+    gap: 12px;
+    /* 搜索框和筛选框的间距 */
 }
 
 .search-input {
     width: 100%;
-    height: 48px;
+    padding: 16px 16px 16px 48px;
+    font-size: 17px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 0 16px 0 48px;
-    font-size: 17px;
+    /* 圆角统一 */
     color: var(--text-primary);
     outline: none;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     transition: all 0.2s var(--ease-apple);
+    flex: 1;
+    /* 占据剩余空间 */
 }
 
 .search-input:focus {
@@ -116,6 +122,209 @@
     color: var(--text-secondary);
     width: 18px;
     height: 18px;
+    z-index: 2;
+    /* 确保图标在最上层 */
+}
+
+/* 新增：内联筛选下拉框 */
+.filter-select-inline {
+    width: 140px;
+    /* 固定宽度，避免这档太多 */
+    padding: 0 16px;
+    font-size: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s var(--ease-apple);
+
+    /* 隐藏默认箭头并使用自定义背景图可能会更美观，这里暂用默认样式但在深色模式下优化 */
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.filter-select-inline:focus {
+    border-color: var(--accent-blue);
+}
+
+/* 布局切换按钮 */
+.layout-toggle {
+    display: flex;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2px;
+    height: 52px;
+    /* 与 Search Input 高度一致 */
+}
+
+.layout-btn {
+    width: 46px;
+    height: 46px;
+    border: none;
+    background: none;
+    border-radius: 9px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.layout-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.layout-btn.active {
+    background: var(--bg-body);
+    /* 或更深的颜色 */
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.layout-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+/* 6. List View Mode (Excel 风格列表) */
+.list-header {
+    display: none;
+    /* 默认隐藏 */
+    max-width: 1000px;
+    margin: 0 auto 8px;
+    padding: 0 16px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.list-header.active {
+    display: flex;
+}
+
+.col-avatar {
+    width: 60px;
+}
+
+.col-name {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.col-team {
+    width: 150px;
+}
+
+.grid-container.list-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    /* 类似 Excel 的分割线微距 */
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--border-color);
+    /* 利用背景色做分割线 */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 列表模式下的卡片样式 (Excel Row) */
+.grid-container.list-mode .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    padding: 10px 16px;
+    min-height: 52px;
+    /* 紧凑行高 */
+    background: var(--bg-card);
+    border-radius: 0;
+    /* 去除圆角 */
+    box-shadow: none;
+    /* 去除阴影 */
+    transition: background 0.1s;
+}
+
+/* 斑马纹 */
+.grid-container.list-mode .card:nth-child(even) {
+    background: var(--bg-body);
+}
+
+.grid-container.list-mode .card:hover {
+    background: var(--accent-blue-alpha);
+    /* 悬停高亮 */
+    transform: none;
+    /* 禁用上浮动画 */
+}
+
+.grid-container.list-mode .card .avatar {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0;
+    margin-right: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+}
+
+/* 核心技巧：解包 info 容器，让 name 和 team 直接参与 Flex 布局 */
+.grid-container.list-mode .card .info {
+    display: contents;
+}
+
+.grid-container.list-mode .card .name {
+    font-size: 15px;
+    font-weight: 500;
+    flex: 1;
+    /* 占据剩余空间 */
+    margin: 0;
+}
+
+.grid-container.list-mode .card .team-badge {
+    margin-top: 0;
+    font-size: 14px;
+    width: 150px;
+    background: none;
+    padding: 0;
+    color: var(--text-secondary);
+    font-weight: normal;
+    text-align: left;
+}
+
+/* 骨架屏适配 Excel 模式 */
+.grid-container.list-mode .card.skeleton {
+    flex-direction: row;
+    align-items: center;
+}
+
+.grid-container.list-mode .skeleton-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 28px;
+    margin-bottom: 0;
+}
+
+.grid-container.list-mode .skeleton-text {
+    width: 30%;
+    height: 16px;
+    margin-bottom: 0;
+}
+
+.grid-container.list-mode .skeleton-tag {
+    margin-top: 0;
+    margin-left: auto;
+    width: 100px;
+    height: 16px;
 }
 
 /* 5. Filter Panel */

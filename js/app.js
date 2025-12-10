@@ -14,10 +14,7 @@ let allPlayersData = [];
 
 // 🟢 1. 初始化
 async function init() {
-    // 自动检测系统深色模式偏好
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
+    // 主题初始化已移交给 animations.js 处理
 
     // 🔴 关键修改：只在“球员”页面加载数据
     const playerContainer = document.getElementById('player-list');
