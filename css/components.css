@@ -1,0 +1,274 @@
+/**
+ * 文件名: components.css
+ * 用途: UI 组件样式
+ * 描述: 定义页面中可复用的界面组件，如导航栏 (Navbar)、按钮 (Buttons)、
+ *       搜索框 (Search)、卡片 (Cards) 和筛选面板 (Filter Panel)。
+ */
+/* UI Components */
+
+/* 1. Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background: var(--bg-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-links {
+    display: none;
+    /* Mobile first: hidden */
+    gap: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary);
+}
+
+.nav-controls {
+    display: flex;
+    gap: 16px;
+}
+
+/* 2. Buttons */
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(128, 128, 128, 0.1);
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* 3. Hero Section */
+.hero {
+    text-align: center;
+    padding: 64px 20px 32px;
+}
+
+/* 4. Search */
+.search-container {
+    max-width: 600px;
+    margin: 32px auto 0;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    height: 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0 16px 0 48px;
+    font-size: 17px;
+    color: var(--text-primary);
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s var(--ease-apple);
+}
+
+.search-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    width: 18px;
+    height: 18px;
+}
+
+/* 5. Filter Panel */
+.filter-panel {
+    max-width: 600px;
+    margin: 16px auto;
+    background: var(--bg-glass);
+    border-radius: 12px;
+    padding: 0 16px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s var(--ease-apple);
+}
+
+.filter-panel.active {
+    max-height: 100px;
+    opacity: 1;
+    padding: 16px;
+    margin-bottom: 32px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 15px;
+}
+
+/* 6. Grid Layout */
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 7. Cards */
+.card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s var(--ease-apple), box-shadow 0.3s var(--ease-apple);
+    will-change: transform;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-hover);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f0f0f0;
+    border: 3px solid var(--bg-body);
+    flex-shrink: 0;
+}
+
+.info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.name {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.team-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-blue);
+    background: rgba(0, 122, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 100px;
+}
+
+/* 8. Empty States & Views */
+.page-view {
+    animation: fadeIn 0.4s var(--ease-apple);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 120px 24px;
+    color: var(--text-secondary);
+}
+
+.empty-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    display: inline-block;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.empty-state p {
+    font-size: 17px;
+    line-height: 1.5;
+}

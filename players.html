@@ -1,0 +1,117 @@
+<!--
+  文件名: players.html
+  用途: 球员列表页
+  描述: 展示所有 NBA 球员数据，支持搜索和筛选。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players - NBA Wiki</title>
+
+    <!-- 第三方库 -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <!-- 配置文件 -->
+    <script src="config.js"></script>
+
+    <!-- CSS 样式 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span style="font-size: 24px;">🏀</span>
+            <span>NBA Wiki</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="teams.html" class="nav-link">Teams</a>
+            <a href="players.html" class="nav-link active">Players</a>
+            <a href="draft.html" class="nav-link">Draft</a>
+        </div>
+
+        <div class="nav-controls">
+            <button class="icon-btn" onclick="toggleFilter()" title="筛选">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
+                </svg>
+            </button>
+            <button class="icon-btn" onclick="toggleTheme()" title="切换主题">
+                <svg id="theme-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>NBA Players</h1>
+        <p>Search and discover your favorite athletes.</p>
+
+        <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search players..."
+                oninput="debounceSearch()">
+        </div>
+    </header>
+
+    <div class="filter-panel" id="filterPanel">
+        <select id="teamSelect" class="filter-select" onchange="handleFilter()">
+            <option value="all">All Teams</option>
+        </select>
+    </div>
+
+    <main class="grid-container" id="player-list">
+        <!-- Skeleton Loading -->
+        <div class="card skeleton">
+            <div class="skeleton-avatar"></div>
+            <div class="info">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-tag"></div>
+            </div>
+        </div>
+        <div class="card skeleton">
+            <div class="skeleton-avatar"></div>
+            <div class="info">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-tag"></div>
+            </div>
+        </div>
+        <div class="card skeleton">
+            <div class="skeleton-avatar"></div>
+            <div class="info">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-tag"></div>
+            </div>
+        </div>
+        <div class="card skeleton">
+            <div class="skeleton-avatar"></div>
+            <div class="info">
+                <div class="skeleton-text"></div>
+                <div class="skeleton-tag"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS 脚本 -->
+    <script src="js/animations.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

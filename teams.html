@@ -1,0 +1,59 @@
+<!--
+  文件名: teams.html
+  用途: 球队列表页
+  描述: 展示 NBA 球队数据（开发中）。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams - NBA Wiki</title>
+
+    <!-- 基础配置 & 样式 -->
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span style="font-size: 24px;">🏀</span>
+            <span>NBA Wiki</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="teams.html" class="nav-link active">Teams</a>
+            <a href="players.html" class="nav-link">Players</a>
+            <a href="draft.html" class="nav-link">Draft</a>
+        </div>
+
+        <div class="nav-controls">
+            <button class="icon-btn" onclick="toggleTheme()" title="切换主题">
+                <svg id="theme-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-view">
+        <div class="empty-state">
+            <div class="empty-icon">🏆</div>
+            <h2>Teams Directory</h2>
+            <p>This feature is currently under development.<br>Stay tuned for updates!</p>
+        </div>
+    </main>
+
+    <script src="js/animations.js"></script>
+</body>
+
+</html>

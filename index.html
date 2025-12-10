@@ -1,0 +1,81 @@
+<!--
+  文件名: index.html
+  用途: 网站首页
+  描述: 网站的 Landing Page，展示核心品牌和导航入口。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Wiki - Designed by Apple Principles</title>
+
+    <!-- 基础配置 & 样式 -->
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span style="font-size: 24px;">🏀</span>
+            <span>NBA Wiki</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="teams.html" class="nav-link">Teams</a>
+            <a href="players.html" class="nav-link">Players</a>
+            <a href="draft.html" class="nav-link">Draft</a>
+        </div>
+
+        <div class="nav-controls">
+            <button class="icon-btn" onclick="toggleTheme()" title="切换主题">
+                <svg id="theme-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <br><br>
+        <h1>Welcome to NBA Wiki.</h1>
+        <p>The ultimate database for basketball fans.<br>Designed with precision and care.</p>
+
+        <div style="margin-top: 32px; display: flex; gap: 16px; justify-content: center;">
+            <a href="players.html" style="
+                display: inline-block;
+                background: var(--text-primary);
+                color: var(--bg-card);
+                padding: 12px 24px;
+                border-radius: 100px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: opacity 0.2s;
+            " onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">Browse Players</a>
+
+            <a href="teams.html" style="
+                display: inline-block;
+                background: var(--bg-card);
+                color: var(--text-primary);
+                padding: 12px 24px;
+                border-radius: 100px;
+                text-decoration: none;
+                font-weight: 600;
+                border: 1px solid var(--border-color);
+            ">View Teams</a>
+        </div>
+    </header>
+
+    <script src="js/animations.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+/**
+ * 文件名: variables.css
+ * 用途: 全局变量定义
+ * 描述: 定义 CSS 变量（Custom Properties），包括色彩系统（深色/浅色模式）、
+ *       间距、字体栈、阴影效果和动画曲线。这里是控制设计风格的核心。
+ */
+/* Design Variables */
+:root {
+    /* 浅色模式 (Light Mode) */
+    --bg-body: #F5F5F7;
+    --bg-card: #FFFFFF;
+    --bg-glass: rgba(255, 255, 255, 0.72);
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+    --accent-blue: #007AFF;
+    --accent-orange: #FD6B1F;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+    /* 动画曲线 (Apple Standard) */
+    --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+/* 深色模式 (Dark Mode) */
+[data-theme="dark"] {
+    --bg-body: #000000;
+    --bg-card: #1C1C1E;
+    --bg-glass: rgba(28, 28, 30, 0.72);
+    --text-primary: rgba(255, 255, 255, 0.96);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+}

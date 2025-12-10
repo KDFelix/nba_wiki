@@ -1,0 +1,35 @@
+/**
+ * 文件名: reset.css
+ * 用途: 样式重置文件
+ * 描述: 重置浏览器的默认样式（如 margin, padding），确保在不同浏览器（Chrome, Safari等）下显示一致。
+ *       同时包含了一些全局的基础样式设置。
+ */
+/* CSS Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    transition: background-color 0.3s var(--ease-apple), color 0.3s var(--ease-apple);
+}
+
+/* 隐藏滚动条但保留功能 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+}

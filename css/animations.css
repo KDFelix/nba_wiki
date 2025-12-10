@@ -1,0 +1,46 @@
+/**
+ * 文件名: animations.css
+ * 用途: 动画定义
+ * 描述: 定义 CSS 关键帧动画 (keyframes) 和过渡效果。
+ *       例如骨架屏加载动画 (pulse) 等动态效果。
+ */
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.skeleton {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(128, 128, 128, 0.1);
+}
+
+.skeleton-text {
+    height: 20px;
+    background: rgba(128, 128, 128, 0.1);
+    margin-bottom: 8px;
+    border-radius: 4px;
+    width: 60%;
+}
+
+.skeleton-tag {
+    height: 16px;
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 12px;
+    width: 30%;
+}
